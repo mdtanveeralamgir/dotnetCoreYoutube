@@ -13,7 +13,7 @@
             <span asp-validation-for="Name" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="DisplayOrder">DisplayOrder</label>
+            <label asp-for="DisplayOrder"></label>
             <input asp-for="DisplayOrder" class="form-control" />
             <span asp-validation-for="DisplayOrder" class="text-danger"></span>
         </div>
@@ -21,5 +21,14 @@
         <a asp-controller="Category" asp-action="Index" class="btn btn-secondary" stype="width:150px">Back</a>
     </div>
 </form>
+
+
+@*Client side validation*@
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
+
 
 
