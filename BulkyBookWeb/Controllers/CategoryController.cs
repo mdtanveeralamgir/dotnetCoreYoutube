@@ -25,6 +25,13 @@ namespace BulkyBookWeb.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Category obj)
         {
+            if(obj.Name == obj.DisplayOrder.ToString())
+            {
+                ModelState.AddModelError("customError", "The Name and DisplayOrder need to be different");
+                //with key name the msg will be displayed under name input. 
+                //It will not replace the default error msg of name input
+                //ModelState.AddModelError("name", "The Name and DisplayOrder need to be different");
+            }
             if(ModelState.IsValid)
             {
                 _context.Categories.Add(obj);
