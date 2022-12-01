@@ -1,12 +1,9 @@
 ﻿@model Category
 
 <form method="post">
-@*The action is option if the POST method is posting it to the same method as GET request*@
- @*<form method="post" asp-action="Create">*@
-     
     <div class="border p-3 mt-4">
         <div class="row pb-2">
-            <h2 class="text-primary">Create Category</h2>
+            <h2 class="text-primary">Edit Category</h2>
             <hr/>
         </div>
         <div asp-validation-summary="All"></div>
@@ -20,7 +17,7 @@
             <input asp-for="DisplayOrder" class="form-control" />
             <span asp-validation-for="DisplayOrder" class="text-danger"></span>
         </div>
-        <button type="submit" class="btn btn-primary" stype="width:150px">Create</button>
+        <button type="submit" class="btn btn-primary" stype="width:150px">Update</button>
         <a asp-controller="Category" asp-action="Index" class="btn btn-secondary" stype="width:150px">Back</a>
     </div>
 </form>

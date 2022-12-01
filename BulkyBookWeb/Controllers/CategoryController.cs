@@ -43,5 +43,40 @@ namespace BulkyBookWeb.Controllers
             return View(obj);
 
         }
+
+        public IActionResult Edit(int? Id)
+        {
+            if(Id == null || Id == 0)
+            {
+                return NotFound();
+            }
+
+            var CategoryToBeEdited = _context.Categories.SingleOrDefault(x=>x.Id == Id); 
+            if(CategoryToBeEdited == null)
+            {
+                return NotFound();
+            }
+
+            return View(CategoryToBeEdited);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(Category obj)
+        {
+            if (obj.Name == obj.DisplayOrder.ToString())
+            {
+                ModelState.AddModelError("customError", "The Name and DisplayOrder need to be different");
+            }
+            if (ModelState.IsValid)
+            {
+                _context.Categories.Update(obj);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(obj);
+
+        }
     }
 }
